@@ -31,3 +31,4 @@ pnpm-debug.log*
 
 # Optional: Coverage results
 coverage/
+externals
