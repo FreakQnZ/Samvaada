@@ -36,7 +36,7 @@ Run Backend
 ```bash
   cd app
   pip install -r requirements.txt
-  uvicorn main:app
+  uvicorn main:app --host 0.0.0.0 --port 8000
 ```
 Run Frontend
 

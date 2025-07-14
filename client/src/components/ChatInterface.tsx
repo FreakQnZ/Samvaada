@@ -56,7 +56,7 @@ const ChatInterface = () => {
         .filter((msg) => msg.sender === "user" || msg.sender === "assistant")
         .map((msg) => msg.content);
 
-      const response = await fetch("http://localhost:8000/ask", {
+      const response = await fetch("http://192.168.0.102:8000/ask", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -79,9 +79,10 @@ const ChatInterface = () => {
 
       setMessages((prev) => [...prev, assistantMessage]);
     } catch (error) {
+      const errorText = error instanceof Error ? error.message : String(error);
       const errorMessage: Message = {
         id: (Date.now() + 2).toString(),
-        content: "Sorry, something went wrong while processing your request.",
+        content: `Sorry, something went wrong while processing your request. ${errorText}`,
         sender: "assistant",
         timestamp: new Date(),
         type: "error",
